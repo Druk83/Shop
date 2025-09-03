@@ -1,0 +1,689 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title id="productTitle">ЭлектроМаркет - Детали товара</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <!-- Header Section -->
+    <header class="header">
+        <div class="container">
+            <div class="header-top">
+                <div class="logo">
+                    <h1>ЭлектроМаркет</h1>
+                    <p>Продажа электронных компонентов</p>
+                </div>
+                <div class="header-contacts">
+                    <div class="phone">
+                        <span>📞</span>
+                        <span>+7 (495) 123-45-67</span>
+                    </div>
+                    <div class="email">
+                        <span>✉️</span>
+                        <span>info@electromarket.ru</span>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="header-bottom">
+                <nav class="main-nav">
+                    <ul>
+                        <li><a href="index.html">Главная</a></li>
+                        <li><a href="catalog.html" class="active">Каталог</a></li>
+                        <li><a href="about.html">О компании</a></li>
+                        <li><a href="delivery.html">Доставка</a></li>
+                        <li><a href="contacts.html">Контакты</a></li>
+                    </ul>
+                </nav>
+                
+                <div class="search-bar">
+                    <input type="text" placeholder="Поиск по каталогу...">
+                    <button>🔍</button>
+                </div>
+                
+                <div class="cart">
+                    <button class="cart-button" onclick="window.location.href='cart.html'">
+                        <span>🛒</span>
+                        <span class="cart-count">0</span>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Product Detail Section -->
+    <section class="product-detail">
+        <div class="container">
+            <div class="breadcrumb">
+                <a href="index.html">Главная</a> / 
+                <a href="catalog.html">Каталог</a> / 
+                <span id="productNameBreadcrumb">Название товара</span>
+            </div>
+            
+            <div class="product-detail-content">
+                <div class="product-images">
+                    <div class="main-image">
+                        <img id="mainProductImage" src="images/placeholder.svg" alt="Изображение товара" loading="lazy">
+                    </div>
+                    <div class="thumbnail-images">
+                        <img src="images/placeholder-thumb.svg" alt="Вид 1" loading="lazy">
+                        <img src="images/placeholder-thumb.svg" alt="Вид 2" loading="lazy">
+                        <img src="images/placeholder-thumb.svg" alt="Вид 3" loading="lazy">
+                    </div>
+                </div>
+                
+                <div class="product-info">
+                    <h1 id="productName">Название товара</h1>
+                    <div class="product-rating">
+                        <span>⭐⭐⭐⭐⭐</span>
+                        <span>(128 отзывов)</span>
+                    </div>
+                    
+                    <div class="product-price">
+                        <span class="price" id="productPrice">0.00 ₽</span>
+                        <span class="old-price" id="productOldPrice"></span>
+                        <span class="discount" id="productDiscount"></span>
+                    </div>
+                    
+                    <div class="product-availability">
+                        <span class="in-stock">✅ В наличии: <span id="productStock">10 000</span> шт.</span>
+                    </div>
+                    
+                    <div class="product-specs">
+                        <h3>Характеристики:</h3>
+                        <table id="productSpecsTable">
+                            <!-- Product specifications will be inserted here -->
+                        </table>
+                    </div>
+                    
+                    <div class="product-actions">
+                        <div class="quantity-selector">
+                            <label for="quantity">Количество:</label>
+                            <input type="number" id="quantity" min="1" value="1">
+                        </div>
+                        <button class="add-to-cart">Добавить в корзину</button>
+                        <button class="buy-now">Купить в 1 клик</button>
+                    </div>
+                    
+                    <div class="product-description">
+                        <h3>Описание:</h3>
+                        <p id="productDescription">Описание товара</p>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Additional product information sections -->
+            <div class="product-additional-info">
+                <div class="info-section">
+                    <h2>Документы и сертификаты</h2>
+                    <div class="documents-list">
+                        <ul>
+                            <li><a href="#">Техническое описание (PDF, 2.3 Мб)</a></li>
+                            <li><a href="#">Сертификат соответствия (PDF, 1.1 Мб)</a></li>
+                            <li><a href="#">Руководство пользователя (PDF, 3.7 Мб)</a></li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <div class="info-section">
+                    <h2>Аналоги и возможные замены</h2>
+                    <div class="analogs-list">
+                        <ul>
+                            <li><a href="#">Резистор 1 кОм 1% 0.25 Вт (производитель Vishay)</a></li>
+                            <li><a href="#">Резистор 1 кОм 1% 0.25 Вт (производитель Panasonic)</a></li>
+                            <li><a href="#">Резистор 1 кОм 1% 0.25 Вт (производитель Samsung)</a></li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <div class="info-section">
+                    <h2>Описание B41851A3477M</h2>
+                    <div class="product-description-full">
+                        <p>Подробное техническое описание модели B41851A3477M. Этот раздел содержит специфическую информацию о данной конкретной модели, включая особенности конструкции, материалы, условия эксплуатации и другие технические детали.</p>
+                        <p>Изделие B41851A3477M соответствует международным стандартам качества и надежности. Производство осуществляется на современных автоматизированных линиях с соблюдением всех требований технического регулирования.</p>
+                    </div>
+                </div>
+                
+                <div class="info-section">
+                    <h2>Технические параметры</h2>
+                    <div class="technical-parameters">
+                        <table>
+                            <tr>
+                                <td>Материал корпуса:</td>
+                                <td>Пластик ABS</td>
+                            </tr>
+                            <tr>
+                                <td>Температурный диапазон:</td>
+                                <td>-40°C до +105°C</td>
+                            </tr>
+                            <tr>
+                                <td>Влажность эксплуатации:</td>
+                                <td>5% до 95% (без конденсации)</td>
+                            </tr>
+                            <tr>
+                                <td>Срок службы:</td>
+                                <td>10 лет</td>
+                            </tr>
+                            <tr>
+                                <td>Гарантия производителя:</td>
+                                <td>2 года</td>
+                            </tr>
+                        </table>
+                    </div>
+                </div>
+                
+                <div class="info-section">
+                    <h2>Способы доставки</h2>
+                    <div class="delivery-methods">
+                        <div class="delivery-option">
+                            <h3>Самовывоз</h3>
+                            <p>Бесплатно из нашего офиса в Москве. Время работы: пн-пт 9:00-18:00</p>
+                        </div>
+                        <div class="delivery-option">
+                            <h3>Курьером по Москве</h3>
+                            <p>300 ₽ в пределах МКАД, 20 ₽ за каждый км за МКАД. Доставка в течение 1-2 дней.</p>
+                        </div>
+                        <div class="delivery-option">
+                            <h3>Транспортными компаниями</h3>
+                            <p>Деловые Линии, ПЭК, СДЭК. Стоимость рассчитывается при оформлении заказа.</p>
+                        </div>
+                        <div class="delivery-option">
+                            <h3>Почтой России</h3>
+                            <p>Посылка 1 класса. Срок доставки 3-7 дней в зависимости от региона.</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Product Reviews Section -->
+                <div class="info-section">
+                    <h2>Отзывы покупателей</h2>
+                    <div class="reviews-summary">
+                        <div class="rating-summary">
+                            <div class="average-rating">
+                                <span class="rating-value">4.5</span>
+                                <div class="stars">
+                                    <span class="star filled">★</span>
+                                    <span class="star filled">★</span>
+                                    <span class="star filled">★</span>
+                                    <span class="star filled">★</span>
+                                    <span class="star half">★</span>
+                                </div>
+                                <span class="review-count">24 отзыва</span>
+                            </div>
+                            <button class="add-review-btn">Написать отзыв</button>
+                        </div>
+                    </div>
+                    
+                    <div class="reviews-list">
+                        <div class="review-item">
+                            <div class="review-header">
+                                <div class="reviewer-info">
+                                    <span class="reviewer-name">Алексей Петров</span>
+                                    <div class="review-stars">
+                                        <span class="star filled">★</span>
+                                        <span class="star filled">★</span>
+                                        <span class="star filled">★</span>
+                                        <span class="star filled">★</span>
+                                        <span class="star filled">★</span>
+                                    </div>
+                                </div>
+                                <div class="review-date">15.03.2025</div>
+                            </div>
+                            <div class="review-content">
+                                <p class="review-title">Отличное качество по хорошей цене</p>
+                                <p>Заказывал эти резисторы для своего проекта. Качество отличное, работают без нареканий уже несколько месяцев. Цена тоже порадовала - дешевле, чем у конкурентов.</p>
+                                <div class="review-advantages">
+                                    <strong>Достоинства:</strong> Хорошее качество, низкая цена
+                                </div>
+                                <div class="review-disadvantages">
+                                    <strong>Недостатки:</strong> Упаковка могла бы быть лучше
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="review-item">
+                            <div class="review-header">
+                                <div class="reviewer-info">
+                                    <span class="reviewer-name">Мария Иванова</span>
+                                    <div class="review-stars">
+                                        <span class="star filled">★</span>
+                                        <span class="star filled">★</span>
+                                        <span class="star filled">★</span>
+                                        <span class="star filled">★</span>
+                                        <span class="star">★</span>
+                                    </div>
+                                </div>
+                                <div class="review-date">03.03.2025</div>
+                            </div>
+                            <div class="review-content">
+                                <p class="review-title">Хороший компонент, но с небольшими недостатками</p>
+                                <p>Использую в своих Arduino проектах. В целом доволен, но иногда попадаются бракованные экземпляры. Связался с поддержкой - быстро заменили.</p>
+                                <div class="review-advantages">
+                                    <strong>Достоинства:</strong> Стабильные характеристики, быстрая поддержка
+                                </div>
+                                <div class="review-disadvantages">
+                                    <strong>Недостатки:</strong> Иногда попадаются бракованные компоненты
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="review-item">
+                            <div class="review-header">
+                                <div class="reviewer-info">
+                                    <span class="reviewer-name">Дмитрий Сидоров</span>
+                                    <div class="review-stars">
+                                        <span class="star filled">★</span>
+                                        <span class="star filled">★</span>
+                                        <span class="star filled">★</span>
+                                        <span class="star filled">★</span>
+                                        <span class="star filled">★</span>
+                                    </div>
+                                </div>
+                                <div class="review-date">28.02.2025</div>
+                            </div>
+                            <div class="review-content">
+                                <p class="review-title">Рекомендую для начинающих электронщиков</p>
+                                <p>Покупал для обучения студентов. Отлично подходят для учебных проектов. Хорошее соотношение цена/качество.</p>
+                                <div class="review-advantages">
+                                    <strong>Достоинства:</strong> Подходят для обучения, хорошее качество
+                                </div>
+                                <div class="review-disadvantages">
+                                    <strong>Недостатки:</strong> -
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Add Review Form (Hidden by default) -->
+                    <div class="add-review-form" id="addReviewForm" style="display: none;">
+                        <h3>Написать отзыв</h3>
+                        <form id="reviewForm">
+                            <div class="form-group">
+                                <label for="reviewerName">Ваше имя:</label>
+                                <input type="text" id="reviewerName" name="reviewerName" required>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label>Оценка:</label>
+                                <div class="rating-input">
+                                    <input type="radio" id="star5" name="rating" value="5">
+                                    <label for="star5">★</label>
+                                    <input type="radio" id="star4" name="rating" value="4">
+                                    <label for="star4">★</label>
+                                    <input type="radio" id="star3" name="rating" value="3">
+                                    <label for="star3">★</label>
+                                    <input type="radio" id="star2" name="rating" value="2">
+                                    <label for="star2">★</label>
+                                    <input type="radio" id="star1" name="rating" value="1">
+                                    <label for="star1">★</label>
+                                </div>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="reviewTitle">Заголовок отзыва:</label>
+                                <input type="text" id="reviewTitle" name="reviewTitle" required>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="reviewText">Текст отзыва:</label>
+                                <textarea id="reviewText" name="reviewText" rows="4" required></textarea>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="reviewPros">Достоинства:</label>
+                                <textarea id="reviewPros" name="reviewPros" rows="2"></textarea>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="reviewCons">Недостатки:</label>
+                                <textarea id="reviewCons" name="reviewCons" rows="2"></textarea>
+                            </div>
+                            
+                            <div class="form-actions">
+                                <button type="button" class="cancel-review-btn">Отмена</button>
+                                <button type="submit" class="submit-review-btn">Отправить отзыв</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Related Products Section -->
+    <section class="products">
+        <div class="container">
+            <h2>Похожие товары</h2>
+            <div class="products-grid" id="relatedProductsContainer">
+                <!-- Related products will be inserted here -->
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-column">
+                    <h3>ЭлектроМаркет</h3>
+                    <p>Продажа электронных компонентов с 2010 года. Более 100 000 наименований в наличии.</p>
+                </div>
+                <div class="footer-column">
+                    <h3>Каталог</h3>
+                    <ul>
+                        <li><a href="#">Резисторы</a></li>
+                        <li><a href="#">Конденсаторы</a></li>
+                        <li><a href="#">Микросхемы</a></li>
+                        <li><a href="#">Светодиоды</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h3>Информация</h3>
+                    <ul>
+                        <li><a href="about.html">О компании</a></li>
+                        <li><a href="delivery.html">Доставка и оплата</a></li>
+                        <li><a href="#">Гарантия</a></li>
+                        <li><a href="contacts.html">Контакты</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h3>Контакты</h3>
+                    <p>📍 Москва, ул. Электронная, д. 15</p>
+                    <p>📞 +7 (495) 123-45-67</p>
+                    <p>✉️ info@electromarket.ru</p>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 ЭлектроМаркет. Все права защищены.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+    <script>
+        // Product data
+        const productData = {
+            "Резистор 1 кОм": {
+                name: "Резистор 1 кОм",
+                fullName: "Резистор 1 кОм, металлопленочный",
+                description: "Металлопленочные резисторы серии MR25 используются в цепях с высокой точностью и стабильностью характеристик. Они обладают низким уровнем шума и excellent частотными характеристиками, что делает их идеальными для применения в аудио и прецизионных измерительных приборах. Резисторы соответствуют стандартам IEC 60115 и имеют сертификат соответствия RoHS.",
+                price: "0.50 ₽",
+                oldPrice: "0.75 ₽",
+                discount: "-25%",
+                stock: "10 000",
+                image: "https://via.placeholder.com/400x400?text=Резистор+1+кОм",
+                specs: [
+                    {name: "Тип", value: "Металлопленочный"},
+                    {name: "Сопротивление", value: "1 кОм"},
+                    {name: "Мощность", value: "0.25 Вт"},
+                    {name: "Допуск", value: "±1%"},
+                    {name: "Температурный коэффициент", value: "±100 ppm/°C"}
+                ]
+            },
+            "Конденсатор 100 мкФ": {
+                name: "Конденсатор 100 мкФ",
+                fullName: "Электролитический конденсатор 100 мкФ 25В",
+                description: "Электролитические конденсаторы серии EC25 обладают высокой емкостью в компактном корпусе. Идеально подходят для фильтрации питания в источниках питания и сглаживания пульсаций в электронных схемах. Конденсаторы имеют низкий эквивалентный последовательный ток и высокую надежность при длительной эксплуатации.",
+                price: "1.20 ₽",
+                oldPrice: "",
+                discount: "",
+                stock: "5 000",
+                image: "https://via.placeholder.com/400x400?text=Конденсатор+100+мкФ",
+                specs: [
+                    {name: "Тип", value: "Электролитический"},
+                    {name: "Емкость", value: "100 мкФ"},
+                    {name: "Номинальное напряжение", value: "25 В"},
+                    {name: "Допуск", value: "±20%"},
+                    {name: "Температура эксплуатации", value: "-40°C до +105°C"}
+                ]
+            },
+            "Arduino Uno R3": {
+                name: "Arduino Uno R3",
+                fullName: "Плата разработки Arduino Uno R3",
+                description: "Arduino Uno R3 - это микроконтроллерная плата на базе микросхемы ATmega328P. Плата имеет 14 цифровых входов/выходов (6 из которых могут использоваться как выходы ШИМ), 6 аналоговых входов, кварцевый резонатор 16 МГц, разъем USB, разъем для внешнего питания, разъем ICSP и кнопку сброса. Arduino Uno R3 - отличный выбор для начинающих в изучении электроники и программирования.",
+                price: "750.00 ₽",
+                oldPrice: "900.00 ₽",
+                discount: "-15%",
+                stock: "50",
+                image: "https://via.placeholder.com/400x400?text=Arduino+Uno+R3",
+                specs: [
+                    {name: "Микроконтроллер", value: "ATmega328P"},
+                    {name: "Рабочее напряжение", value: "5 В"},
+                    {name: "Напряжение питания", value: "7-12 В"},
+                    {name: "Цифровые входы/выходы", value: "14"},
+                    {name: "Аналоговые входы", value: "6"},
+                    {name: "Ток на выводе I/O", value: "20 мА"}
+                ]
+            },
+            "Светодиод RGB": {
+                name: "Светодиод RGB",
+                fullName: "Светодиод RGB с общим катодом",
+                description: "Светодиод RGB с общим катодом позволяет создавать различные цвета путем комбинации красного, зеленого и синего свечения. Идеально подходит для декоративной подсветки, индикации состояния устройств, создания цветовых эффектов в интерактивных проектах. Управление осуществляется через широтно-импульсную модуляцию (ШИМ) для каждого цвета.",
+                price: "3.50 ₽",
+                oldPrice: "",
+                discount: "",
+                stock: "1 000",
+                image: "https://via.placeholder.com/400x400?text=Светодиод+RGB",
+                specs: [
+                    {name: "Тип", value: "RGB с общим катодом"},
+                    {name: "Цветовая температура", value: "6500K"},
+                    {name: "Угол рассеивания", value: "120°"},
+                    {name: "Рабочее напряжение", value: "2.0-2.5 В"},
+                    {name: "Рабочий ток", value: "20 мА"}
+                ]
+            },
+            "LM358N": {
+                name: "LM358N",
+                fullName: "Операционный усилитель двойной",
+                description: "LM358N - это двойной операционный усилитель с низким энергопотреблением, предназначенный для работы от одного источника питания. Широко используется в аналоговых схемах для усиления сигналов, фильтрации, компараторов и других приложений. Микросхема обладает высокой стабильностью и низким уровнем шума.",
+                price: "25.00 ₽",
+                oldPrice: "",
+                discount: "",
+                stock: "200",
+                image: "https://via.placeholder.com/400x400?text=LM358N",
+                specs: [
+                    {name: "Тип", value: "Двойной операционный усилитель"},
+                    {name: "Количество каналов", value: "2"},
+                    {name: "Напряжение питания", value: "3-32 В"},
+                    {name: "Ток потребления", value: "0.4 мА"},
+                    {name: "Скорость нарастания", value: "0.3 В/мкс"},
+                    {name: "Корпус", value: "DIP-8"}
+                ]
+            },
+            "HC-SR04": {
+                name: "HC-SR04",
+                fullName: "Ультразвуковой датчик расстояния",
+                description: "HC-SR04 - это ультразвуковой датчик расстояния, который может измерять расстояние от 2 см до 400 см с точностью до 3 мм. Принцип работы основан на измерении времени прохождения ультразвукового сигнала до препятствия и обратно. Широко используется в робототехнике, автоматизации и проектах Arduino для определения расстояния до объектов.",
+                price: "120.00 ₽",
+                oldPrice: "150.00 ₽",
+                discount: "-20%",
+                stock: "75",
+                image: "https://via.placeholder.com/400x400?text=HC-SR04",
+                specs: [
+                    {name: "Тип", value: "Ультразвуковой датчик расстояния"},
+                    {name: "Диапазон измерения", value: "2-400 см"},
+                    {name: "Точность", value: "3 мм"},
+                    {name: "Угол измерения", value: "15°"},
+                    {name: "Рабочее напряжение", value: "5 В"},
+                    {name: "Рабочий ток", value: "15 мА"}
+                ]
+            },
+            "BC547": {
+                name: "BC547",
+                fullName: "Биполярный транзистор NPN",
+                description: "BC547 - это биполярный транзистор структуры NPN, широко используемый в схемах усиления и коммутации. Обладает высоким коэффициентом усиления по току (hFE), низким уровнем шума и хорошей частотной характеристикой. Применяется в аудиоусилителях, логических схемах, драйверах светодиодов и других аналоговых и цифровых приложениях.",
+                price: "2.50 ₽",
+                oldPrice: "",
+                discount: "",
+                stock: "2 500",
+                image: "https://via.placeholder.com/400x400?text=BC547",
+                specs: [
+                    {name: "Тип", value: "Биполярный транзистор NPN"},
+                    {name: "Максимальный ток коллектора", value: "100 мА"},
+                    {name: "Максимальное напряжение коллектор-эмиттер", value: "45 В"},
+                    {name: "Коэффициент усиления (hFE)", value: "110-800"},
+                    {name: "Максимальная рассеиваемая мощность", value: "500 мВт"},
+                    {name: "Корпус", value: "TO-92"}
+                ]
+            },
+            "2N2222": {
+                name: "2N2222",
+                fullName: "Биполярный транзистор NPN",
+                description: "2N2222 - это популярный биполярный транзистор структуры NPN, используемый в широком диапазоне приложений. Обладает высокой частотой работы и хорошими коммутационными характеристиками. Применяется в усилителях, ключевых схемах, драйверах реле и других электронных устройствах. Отлично подходит для проектов на базе микроконтроллеров.",
+                price: "3.00 ₽",
+                oldPrice: "",
+                discount: "",
+                stock: "1 800",
+                image: "https://via.placeholder.com/400x400?text=2N2222",
+                specs: [
+                    {name: "Тип", value: "Биполярный транзистор NPN"},
+                    {name: "Максимальный ток коллектора", value: "800 мА"},
+                    {name: "Максимальное напряжение коллектор-эмиттер", value: "40 В"},
+                    {name: "Коэффициент усиления (hFE)", value: "35-300"},
+                    {name: "Максимальная рассеиваемая мощность", value: "625 мВт"},
+                    {name: "Корпус", value: "TO-18"}
+                ]
+            }
+        };
+
+        // Related products data
+        const relatedProducts = [
+            {
+                name: "Резистор 2.2 кОм",
+                description: "Металлопленочный резистор 2.2 кОм, 0.25 Вт",
+                price: "0.55 ₽",
+                image: "https://via.placeholder.com/200x200?text=Товар"
+            },
+            {
+                name: "Резистор 4.7 кОм",
+                description: "Металлопленочный резистор 4.7 кОм, 0.25 Вт",
+                price: "0.50 ₽",
+                image: "https://via.placeholder.com/200x200?text=Товар"
+            },
+            {
+                name: "Резистор 10 кОм",
+                description: "Металлопленочный резистор 10 кОм, 0.25 Вт",
+                price: "0.45 ₽",
+                oldPrice: "0.60 ₽",
+                image: "https://via.placeholder.com/200x200?text=Товар"
+            },
+            {
+                name: "Резистор 100 кОм",
+                description: "Металлопленочный резистор 100 кОм, 0.25 Вт",
+                price: "0.60 ₽",
+                image: "https://via.placeholder.com/200x200?text=Товар"
+            }
+        ];
+
+        // Function to get URL parameters
+        function getUrlParameter(name) {
+            name = name.replace(/[\[]/, '\\[').replace(/[\]]/, '\\]');
+            var regex = new RegExp('[\\?&]' + name + '=([^&#]*)');
+            var results = regex.exec(window.location.search);
+            return results === null ? '' : decodeURIComponent(results[1].replace(/\+/g, ' '));
+        }
+
+        // Function to display product details
+        function displayProductDetails() {
+            const productName = getUrlParameter('name');
+            const product = productData[productName];
+            
+            if (product) {
+                // Update page title
+                document.title = `ЭлектроМаркет - ${product.name}`;
+                
+                // Update breadcrumb
+                document.getElementById('productNameBreadcrumb').textContent = product.name;
+                
+                // Update product name
+                document.getElementById('productName').textContent = product.fullName;
+                
+                // Update product image
+                document.getElementById('mainProductImage').src = product.image;
+                document.getElementById('mainProductImage').alt = product.name;
+                
+                // Update product price
+                document.getElementById('productPrice').textContent = product.price;
+                
+                // Update old price and discount if available
+                const oldPriceElement = document.getElementById('productOldPrice');
+                const discountElement = document.getElementById('productDiscount');
+                
+                if (product.oldPrice) {
+                    oldPriceElement.textContent = product.oldPrice;
+                    oldPriceElement.style.display = 'inline';
+                } else {
+                    oldPriceElement.style.display = 'none';
+                }
+                
+                if (product.discount) {
+                    discountElement.textContent = product.discount;
+                    discountElement.style.display = 'inline';
+                } else {
+                    discountElement.style.display = 'none';
+                }
+                
+                // Update stock information
+                document.getElementById('productStock').textContent = product.stock;
+                
+                // Update product description
+                document.getElementById('productDescription').textContent = product.description;
+                
+                // Update product specifications
+                const specsTable = document.getElementById('productSpecsTable');
+                specsTable.innerHTML = '';
+                
+                product.specs.forEach(spec => {
+                    const row = document.createElement('tr');
+                    row.innerHTML = `<td>${spec.name}:</td><td>${spec.value}</td>`;
+                    specsTable.appendChild(row);
+                });
+            } else {
+                // If product not found, show default product (first one)
+                const defaultProduct = Object.values(productData)[0];
+                displayProductDetailsForProduct(defaultProduct);
+            }
+        }
+
+        // Function to display related products
+        function displayRelatedProducts() {
+            const container = document.getElementById('relatedProductsContainer');
+            container.innerHTML = '';
+            
+            relatedProducts.forEach(product => {
+                const productCard = document.createElement('div');
+                productCard.className = 'product-card';
+                productCard.innerHTML = `
+                    <img src="${product.image}" alt="${product.name}">
+                    <h3>${product.name}</h3>
+                    <p class="product-description">${product.description}</p>
+                    <div class="product-price">
+                        <span class="price">${product.price}</span>
+                        ${product.oldPrice ? `<span class="old-price">${product.oldPrice}</span>` : ''}
+                    </div>
+                    <button class="add-to-cart">В корзину</button>
+                `;
+                container.appendChild(productCard);
+                
+                // Add click event to navigate to product page
+                productCard.addEventListener('click', function(e) {
+                    // Prevent navigation if clicking on "Add to Cart" button
+                    if (e.target.classList.contains('add-to-cart')) {
+                        return;
+                    }
+                    // Navigate to product page
+                    window.location.href = `product.html?name=${encodeURIComponent(product.name)}`;
+                });
+            });
+        }
+
+        // Initialize product page when DOM is loaded
+        document.addEventListener('DOMContentLoaded', function() {
+            displayProductDetails();
+            displayRelatedProducts();
+        });
+    </script>
+</body>
+</html>

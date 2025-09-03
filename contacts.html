@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Контакты - ЭлектроМаркет</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <!-- Header Section -->
+    <header class="header">
+        <div class="container">
+            <div class="header-top">
+                <div class="logo">
+                    <h1>ЭлектроМаркет</h1>
+                    <p>Продажа электронных компонентов</p>
+                </div>
+                <div class="header-contacts">
+                    <div class="phone">
+                        <span>📞</span>
+                        <span>+7 (495) 123-45-67</span>
+                    </div>
+                    <div class="email">
+                        <span>✉️</span>
+                        <span>info@electromarket.ru</span>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="header-bottom">
+                <nav class="main-nav">
+                    <ul>
+                        <li><a href="index.html">Главная</a></li>
+                        <li><a href="catalog.html">Каталог</a></li>
+                        <li><a href="about.html">О компании</a></li>
+                        <li><a href="delivery.html">Доставка</a></li>
+                        <li><a href="contacts.html" class="active">Контакты</a></li>
+                    </ul>
+                </nav>
+                
+                <div class="search-bar">
+                    <input type="text" placeholder="Поиск по каталогу...">
+                    <button>🔍</button>
+                </div>
+                
+                <div class="cart">
+                    <button class="cart-button" onclick="window.location.href='cart.html'">
+                        <span>🛒</span>
+                        <span class="cart-count">0</span>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Contacts Section -->
+    <section class="contacts-page">
+        <div class="container">
+            <div class="breadcrumb">
+                <a href="index.html">Главная</a> / 
+                <span>Контакты</span>
+            </div>
+            
+            <h1>Контакты</h1>
+            
+            <div class="contacts-content">
+                <div class="contacts-info">
+                    <h2>Наши контакты</h2>
+                    
+                    <div class="contact-item">
+                        <h3>📍 Адрес</h3>
+                        <p>123456, Москва, ул. Электронная, д. 15</p>
+                        <p>БЦ "Технопарк", офис 305</p>
+                    </div>
+                    
+                    <div class="contact-item">
+                        <h3>📞 Телефоны</h3>
+                        <p>Отдел продаж: +7 (495) 123-45-67</p>
+                        <p>Техподдержка: +7 (495) 123-45-68</p>
+                        <p>Факс: +7 (495) 123-45-69</p>
+                    </div>
+                    
+                    <div class="contact-item">
+                        <h3>✉️ Email</h3>
+                        <p>Общие вопросы: info@electromarket.ru</p>
+                        <p>Отдел продаж: sales@electromarket.ru</p>
+                        <p>Техподдержка: support@electromarket.ru</p>
+                    </div>
+                    
+                    <div class="contact-item">
+                        <h3>🕒 Режим работы</h3>
+                        <p>Понедельник - Пятница: 9:00 - 20:00</p>
+                        <p>Суббота: 10:00 - 18:00</p>
+                        <p>Воскресенье: выходной</p>
+                    </div>
+                    
+                    <div class="contact-item">
+                        <h3>🚇 Как добраться</h3>
+                        <p>Станция метро "Электронная", выход №3</p>
+                        <p>Автобусы: 15, 42, 105</p>
+                        <p>Троллейбусы: 12, 24</p>
+                    </div>
+                </div>
+                
+                <div class="contacts-map">
+                    <h2>Карта проезда</h2>
+                    <div class="map-placeholder">
+                        <img src="https://via.placeholder.com/600x400?text=Карта+проезда" alt="Карта проезда до офиса">
+                        <p>Интерактивная карта будет доступна позже</p>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="feedback-form">
+                <h2>Обратная связь</h2>
+                <form id="contactForm">
+                    <div class="form-group">
+                        <label for="name">Ваше имя *</label>
+                        <input type="text" id="name" name="name" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="email">Email *</label>
+                        <input type="email" id="email" name="email" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="phone">Телефон</label>
+                        <input type="tel" id="phone" name="phone">
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="subject">Тема *</label>
+                        <select id="subject" name="subject" required>
+                            <option value="">Выберите тему</option>
+                            <option value="order">Вопрос по заказу</option>
+                            <option value="product">Вопрос по товару</option>
+                            <option value="delivery">Вопрос по доставке</option>
+                            <option value="complaint">Жалоба</option>
+                            <option value="partnership">Партнерство</option>
+                            <option value="other">Другое</option>
+                        </select>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="message">Сообщение *</label>
+                        <textarea id="message" name="message" rows="5" required></textarea>
+                    </div>
+                    
+                    <div class="form-group">
+                        <button type="submit" class="submit-btn">Отправить сообщение</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- Departments Section -->
+    <section class="departments">
+        <div class="container">
+            <h2>Наши отделы</h2>
+            <div class="departments-grid">
+                <div class="department-item">
+                    <h3>Отдел продаж</h3>
+                    <p>Консультации по ассортименту, помощь в подборе компонентов</p>
+                    <p>Тел: +7 (495) 123-45-67</p>
+                    <p>Email: sales@electromarket.ru</p>
+                </div>
+                
+                <div class="department-item">
+                    <h3>Техническая поддержка</h3>
+                    <p>Помощь в технических вопросах, замена брака</p>
+                    <p>Тел: +7 (495) 123-45-68</p>
+                    <p>Email: support@electromarket.ru</p>
+                </div>
+                
+                <div class="department-item">
+                    <h3>Отдел доставки</h3>
+                    <p>Вопросы по доставке, отслеживание посылок</p>
+                    <p>Тел: +7 (495) 123-45-70</p>
+                    <p>Email: delivery@electromarket.ru</p>
+                </div>
+                
+                <div class="department-item">
+                    <h3>Бухгалтерия</h3>
+                    <p>Вопросы по оплате, выставление счетов</p>
+                    <p>Тел: +7 (495) 123-45-71</p>
+                    <p>Email: billing@electromarket.ru</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-column">
+                    <h3>ЭлектроМаркет</h3>
+                    <p>Продажа электронных компонентов с 2010 года. Более 100 000 наименований в наличии.</p>
+                </div>
+                <div class="footer-column">
+                    <h3>Каталог</h3>
+                    <ul>
+                        <li><a href="#">Резисторы</a></li>
+                        <li><a href="#">Конденсаторы</a></li>
+                        <li><a href="#">Микросхемы</a></li>
+                        <li><a href="#">Светодиоды</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h3>Информация</h3>
+                    <ul>
+                        <li><a href="about.html">О компании</a></li>
+                        <li><a href="delivery.html">Доставка и оплата</a></li>
+                        <li><a href="#">Гарантия</a></li>
+                        <li><a href="contacts.html">Контакты</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h3>Контакты</h3>
+                    <p>📍 Москва, ул. Электронная, д. 15</p>
+                    <p>📞 +7 (495) 123-45-67</p>
+                    <p>✉️ info@electromarket.ru</p>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 ЭлектроМаркет. Все права защищены.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+    <script>
+        // Contact form functionality
+        document.addEventListener('DOMContentLoaded', function() {
+            const contactForm = document.getElementById('contactForm');
+            
+            if (contactForm) {
+                contactForm.addEventListener('submit', function(e) {
+                    e.preventDefault();
+                    
+                    // Get form data
+                    const name = document.getElementById('name').value;
+                    const email = document.getElementById('email').value;
+                    const subject = document.getElementById('subject').value;
+                    
+                    // In a real implementation, this would send the data to a server
+                    alert(`Спасибо, ${name}! Ваше сообщение по теме "${subject}" отправлено. Мы свяжемся с вами по email: ${email}`);
+                    
+                    // Reset form
+                    contactForm.reset();
+                });
+            }
+        });
+    </script>
+</body>
+</html>

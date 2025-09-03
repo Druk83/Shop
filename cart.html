@@ -1,0 +1,328 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Корзина - ЭлектроМаркет</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <!-- Header Section -->
+    <header class="header">
+        <div class="container">
+            <div class="header-top">
+                <div class="logo">
+                    <h1>ЭлектроМаркет</h1>
+                    <p>Продажа электронных компонентов</p>
+                </div>
+                <div class="header-contacts">
+                    <div class="phone">
+                        <span>📞</span>
+                        <span>+7 (495) 123-45-67</span>
+                    </div>
+                    <div class="email">
+                        <span>✉️</span>
+                        <span>info@electromarket.ru</span>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="header-bottom">
+                <nav class="main-nav">
+                    <ul>
+                        <li><a href="index.html">Главная</a></li>
+                        <li><a href="catalog.html">Каталог</a></li>
+                        <li><a href="about.html">О компании</a></li>
+                        <li><a href="delivery.html">Доставка</a></li>
+                        <li><a href="contacts.html">Контакты</a></li>
+                    </ul>
+                </nav>
+                
+                <div class="search-bar">
+                    <input type="text" placeholder="Поиск по каталогу...">
+                    <button>🔍</button>
+                </div>
+                
+                <div class="cart">
+                    <button class="cart-button" onclick="window.location.href='cart.html'">
+                        <span>🛒</span>
+                        <span class="cart-count">3</span>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Cart Section -->
+    <section class="cart-page">
+        <div class="container">
+            <div class="breadcrumb">
+                <a href="index.html">Главная</a> / 
+                <span>Корзина</span>
+            </div>
+            
+            <h1>Корзина покупок</h1>
+            
+            <div class="cart-content">
+                <!-- Cart Items -->
+                <div class="cart-items">
+                    <!-- Cart Item 1 -->
+                    <div class="cart-item">
+                        <div class="item-image">
+                            <img src="images/placeholder-small.svg" alt="Резистор 1 кОм">
+                        </div>
+                        <div class="item-details">
+                            <h3>Резистор 1 кОм, металлопленочный</h3>
+                            <p class="item-id">Артикул: RES-001</p>
+                        </div>
+                        <div class="item-price">
+                            <span class="price">0.50 ₽</span>
+                        </div>
+                        <div class="item-quantity">
+                            <button class="quantity-btn minus">-</button>
+                            <input type="number" value="10" min="1">
+                            <button class="quantity-btn plus">+</button>
+                        </div>
+                        <div class="item-total">
+                            <span class="total">5.00 ₽</span>
+                        </div>
+                        <div class="item-remove">
+                            <button class="remove-btn">✕</button>
+                        </div>
+                    </div>
+                    
+                    <!-- Cart Item 2 -->
+                    <div class="cart-item">
+                        <div class="item-image">
+                            <img src="images/placeholder-small.svg" alt="Arduino Uno">
+                        </div>
+                        <div class="item-details">
+                            <h3>Arduino Uno R3</h3>
+                            <p class="item-id">Артикул: ARD-001</p>
+                        </div>
+                        <div class="item-price">
+                            <span class="price">750.00 ₽</span>
+                        </div>
+                        <div class="item-quantity">
+                            <button class="quantity-btn minus">-</button>
+                            <input type="number" value="1" min="1">
+                            <button class="quantity-btn plus">+</button>
+                        </div>
+                        <div class="item-total">
+                            <span class="total">750.00 ₽</span>
+                        </div>
+                        <div class="item-remove">
+                            <button class="remove-btn">✕</button>
+                        </div>
+                    </div>
+                    
+                    <!-- Cart Item 3 -->
+                    <div class="cart-item">
+                        <div class="item-image">
+                            <img src="images/placeholder-small.svg" alt="Светодиод RGB">
+                        </div>
+                        <div class="item-details">
+                            <h3>Светодиод RGB с общим катодом</h3>
+                            <p class="item-id">Артикул: LED-003</p>
+                        </div>
+                        <div class="item-price">
+                            <span class="price">3.50 ₽</span>
+                        </div>
+                        <div class="item-quantity">
+                            <button class="quantity-btn minus">-</button>
+                            <input type="number" value="5" min="1">
+                            <button class="quantity-btn plus">+</button>
+                        </div>
+                        <div class="item-total">
+                            <span class="total">17.50 ₽</span>
+                        </div>
+                        <div class="item-remove">
+                            <button class="remove-btn">✕</button>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Cart Summary -->
+                <div class="cart-summary">
+                    <div class="summary-box">
+                        <h2>Итого по заказу</h2>
+                        <div class="summary-row">
+                            <span>Товаров на сумму:</span>
+                            <span>772.50 ₽</span>
+                        </div>
+                        <div class="summary-row">
+                            <span>Скидка:</span>
+                            <span>-50.00 ₽</span>
+                        </div>
+                        <div class="summary-row">
+                            <span>Доставка:</span>
+                            <span>Бесплатно</span>
+                        </div>
+                        <div class="summary-row total">
+                            <span>К оплате:</span>
+                            <span class="total-amount">722.50 ₽</span>
+                        </div>
+                        <button class="checkout-btn">Оформить заказ</button>
+                        <button class="continue-shopping">Продолжить покупки</button>
+                    </div>
+                    
+                    <div class="promo-code">
+                        <h3>Промокод</h3>
+                        <div class="promo-input">
+                            <input type="text" placeholder="Введите промокод">
+                            <button>Применить</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-column">
+                    <h3>ЭлектроМаркет</h3>
+                    <p>Продажа электронных компонентов с 2010 года. Более 100 000 наименований в наличии.</p>
+                </div>
+                <div class="footer-column">
+                    <h3>Каталог</h3>
+                    <ul>
+                        <li><a href="#">Резисторы</a></li>
+                        <li><a href="#">Конденсаторы</a></li>
+                        <li><a href="#">Микросхемы</a></li>
+                        <li><a href="#">Светодиоды</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h3>Информация</h3>
+                    <ul>
+                        <li><a href="#">О компании</a></li>
+                        <li><a href="#">Доставка и оплата</a></li>
+                        <li><a href="#">Гарантия</a></li>
+                        <li><a href="#">Контакты</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h3>Контакты</h3>
+                    <p>📍 Москва, ул. Электронная, д. 15</p>
+                    <p>📞 +7 (495) 123-45-67</p>
+                    <p>✉️ info@electromarket.ru</p>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 ЭлектроМаркет. Все права защищены.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+    <script>
+        // Cart page specific functionality
+        document.addEventListener('DOMContentLoaded', function() {
+            // Update cart count
+            const cartCountElement = document.querySelector('.cart-count');
+            cartCountElement.textContent = '3';
+            
+            // Quantity buttons functionality
+            const minusButtons = document.querySelectorAll('.quantity-btn.minus');
+            const plusButtons = document.querySelectorAll('.quantity-btn.plus');
+            
+            minusButtons.forEach(button => {
+                button.addEventListener('click', function() {
+                    const input = this.nextElementSibling;
+                    let value = parseInt(input.value);
+                    if (value > 1) {
+                        input.value = value - 1;
+                        updateItemTotal(this.closest('.cart-item'));
+                    }
+                });
+            });
+            
+            plusButtons.forEach(button => {
+                button.addEventListener('click', function() {
+                    const input = this.previousElementSibling;
+                    let value = parseInt(input.value);
+                    input.value = value + 1;
+                    updateItemTotal(this.closest('.cart-item'));
+                });
+            });
+            
+            // Quantity input change
+            const quantityInputs = document.querySelectorAll('.item-quantity input');
+            quantityInputs.forEach(input => {
+                input.addEventListener('change', function() {
+                    if (this.value < 1) this.value = 1;
+                    updateItemTotal(this.closest('.cart-item'));
+                });
+            });
+            
+            // Remove item buttons
+            const removeButtons = document.querySelectorAll('.remove-btn');
+            removeButtons.forEach(button => {
+                button.addEventListener('click', function() {
+                    const item = this.closest('.cart-item');
+                    item.remove();
+                    updateCartSummary();
+                });
+            });
+            
+            // Continue shopping button
+            const continueShoppingButton = document.querySelector('.continue-shopping');
+            continueShoppingButton.addEventListener('click', function() {
+                window.location.href = 'catalog.html';
+            });
+            
+            // Checkout button
+            const checkoutButton = document.querySelector('.checkout-btn');
+            checkoutButton.addEventListener('click', function() {
+                alert('Переход к оформлению заказа');
+                // In a real implementation, this would redirect to checkout page
+            });
+            
+            // Apply promo code
+            const applyPromoButton = document.querySelector('.promo-input button');
+            applyPromoButton.addEventListener('click', function() {
+                const promoInput = document.querySelector('.promo-input input');
+                if (promoInput.value.trim()) {
+                    alert(`Промокод "${promoInput.value}" применен!`);
+                    // In a real implementation, this would apply the discount
+                } else {
+                    alert('Введите промокод');
+                }
+            });
+            
+            // Function to update item total
+            function updateItemTotal(itemElement) {
+                const priceText = itemElement.querySelector('.item-price .price').textContent;
+                const price = parseFloat(priceText.replace(' ₽', '').replace(',', '.'));
+                const quantity = parseInt(itemElement.querySelector('.item-quantity input').value);
+                const total = price * quantity;
+                
+                itemElement.querySelector('.item-total .total').textContent = total.toFixed(2) + ' ₽';
+                updateCartSummary();
+            }
+            
+            // Function to update cart summary
+            function updateCartSummary() {
+                let subtotal = 0;
+                const items = document.querySelectorAll('.cart-item');
+                
+                items.forEach(item => {
+                    const totalText = item.querySelector('.item-total .total').textContent;
+                    const total = parseFloat(totalText.replace(' ₽', '').replace(',', '.'));
+                    subtotal += total;
+                });
+                
+                // Apply discount if applicable (for demo purposes)
+                const discount = 50.00;
+                const total = subtotal - discount;
+                
+                document.querySelector('.summary-row:nth-child(2) span:last-child').textContent = '-' + discount.toFixed(2) + ' ₽';
+                document.querySelector('.summary-row.total .total-amount').textContent = total.toFixed(2) + ' ₽';
+            }
+        });
+    </script>
+</body>
+</html>
