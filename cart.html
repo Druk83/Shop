@@ -225,6 +225,17 @@
             const cartCountElement = document.querySelector('.cart-count');
             cartCountElement.textContent = '3';
             
+            // Добавляем обработчик клика для изображений товаров
+            const itemImages = document.querySelectorAll('.item-image');
+            itemImages.forEach(image => {
+                image.style.cursor = 'pointer'; // Меняем курсор, чтобы было понятно, что можно кликнуть
+                image.addEventListener('click', function() {
+                    const itemName = this.closest('.cart-item').querySelector('.item-details h3').textContent;
+                    // Создаем URL для перехода на страницу товара
+                    window.location.href = `product.html?name=${encodeURIComponent(itemName)}`;
+                });
+            });
+            
             // Quantity buttons functionality
             const minusButtons = document.querySelectorAll('.quantity-btn.minus');
             const plusButtons = document.querySelectorAll('.quantity-btn.plus');

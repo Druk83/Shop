@@ -1,0 +1,8 @@
+<svg width="200" height="200" xmlns="http://www.w3.org/2000/svg">
+  <rect width="100%" height="100%" fill="#f8f8f8"/>
+  <circle cx="100" cy="80" r="25" fill="#f0f0f0" stroke="#999" stroke-width="2"/>
+  <circle cx="100" cy="80" r="15" fill="#f8f8f8"/>
+  <line x1="100" y1="35" x2="100" y2="55" stroke="#666" stroke-width="2"/>
+  <line x1="100" y1="105" x2="100" y2="125" stroke="#666" stroke-width="2"/>
+  <text x="100" y="150" font-family="Arial" font-size="14" text-anchor="middle" fill="#666">Светодиод RGB</text>
+</svg>

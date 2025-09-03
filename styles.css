@@ -789,6 +789,30 @@ body {
     border-bottom: 1px solid #eee;
 }
 
+.item-image {
+    cursor: pointer;
+    transition: transform 0.2s ease-in-out;
+    position: relative;
+}
+
+.item-image:hover {
+    transform: scale(1.05);
+}
+
+.item-image:hover::after {
+    content: 'Перейти к товару';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background-color: rgba(52, 152, 219, 0.7);
+    color: white;
+    text-align: center;
+    padding: 5px 0;
+    font-size: 12px;
+    border-radius: 0 0 4px 4px;
+}
+
 .item-image img {
     width: 100%;
     height: auto;
