@@ -118,6 +118,15 @@ function checkUserAuthState() {
     if (userData) {
         currentUser = JSON.parse(userData);
         updateUIForLoggedInUser(currentUser);
+        
+        // Check if user is admin (for demo purposes, we'll check if email is admin@electromarket.ru)
+        if (currentUser.email === 'admin@electromarket.ru') {
+            // Show admin link
+            const adminLinks = document.querySelectorAll('a[href="admin.html"]');
+            adminLinks.forEach(link => {
+                link.style.display = 'block';
+            });
+        }
     } else {
         updateUIForGuestUser();
     }
@@ -213,6 +222,21 @@ function updateUIForLoggedInUser(user) {
         }
         userInitials.textContent = initials;
     }
+    
+    // Check if user is admin
+    if (user.email === 'admin@electromarket.ru') {
+        // Show admin link
+        const adminLinks = document.querySelectorAll('a[href="admin.html"]');
+        adminLinks.forEach(link => {
+            link.style.display = 'block';
+        });
+    } else {
+        // Hide admin link for regular users
+        const adminLinks = document.querySelectorAll('a[href="admin.html"]');
+        adminLinks.forEach(link => {
+            link.style.display = 'none';
+        });
+    }
 }
 
 // Update UI for guest user
@@ -224,10 +248,24 @@ function updateUIForGuestUser() {
         guestView.style.display = 'block';
         userView.style.display = 'none';
     }
+    
+    // Hide admin link for guests
+    const adminLinks = document.querySelectorAll('a[href="admin.html"]');
+    adminLinks.forEach(link => {
+        link.style.display = 'none';
+    });
 }
 
 // Initialize event listeners when the page loads
 document.addEventListener('DOMContentLoaded', function() {
+    const burgerBtn = document.getElementById('burger-menu-btn');
+    const header = document.querySelector('.header');
+    if (burgerBtn && header) {
+        burgerBtn.addEventListener('click', function() {
+            header.classList.toggle('open');
+        });
+    }
+    
     // Add event listeners to "Add to Cart" buttons
     const addToCartButtons = document.querySelectorAll('.add-to-cart');
     
@@ -1075,7 +1113,6 @@ document.addEventListener('DOMContentLoaded', function() {
         const userDropdown = document.querySelector('.user-dropdown');
         if (userDropdown) {
             let hideTimeout;
-            
             userDropdown.addEventListener('mouseenter', function() {
                 clearTimeout(hideTimeout);
                 const dropdownContent = this.querySelector('.user-dropdown-content');
@@ -1083,34 +1120,15 @@ document.addEventListener('DOMContentLoaded', function() {
                     dropdownContent.style.display = 'block';
                 }
             });
-            
             userDropdown.addEventListener('mouseleave', function() {
                 const dropdownContent = this.querySelector('.user-dropdown-content');
-                if (dropdownContent) {
-                    // Add a small delay before hiding to allow moving cursor to dropdown items
-                    hideTimeout = setTimeout(() => {
+                hideTimeout = setTimeout(function() {
+                    if (dropdownContent) {
                         dropdownContent.style.display = 'none';
-                    }, 300);
-                }
+                    }
+                }, 200);
             });
-            
-            // Also handle the dropdown content itself
-            const dropdownContent = userDropdown.querySelector('.user-dropdown-content');
-            if (dropdownContent) {
-                dropdownContent.addEventListener('mouseenter', function() {
-                    clearTimeout(hideTimeout);
-                    this.style.display = 'block';
-                });
-                
-                dropdownContent.addEventListener('mouseleave', function() {
-                    hideTimeout = setTimeout(() => {
-                        this.style.display = 'none';
-                    }, 300);
-                });
-            }
         }
     }
-    
-    // Initialize enhanced dropdown functionality
     enhanceUserDropdown();
 });
