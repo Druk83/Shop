@@ -134,6 +134,28 @@ body {
     font-size: 12px;
 }
 
+/* User account icon styles */
+.user-account {
+    margin-left: 15px;
+}
+
+.account-button {
+    background: none;
+    border: none;
+    font-size: 24px;
+    cursor: pointer;
+    position: relative;
+    transition: transform 0.2s;
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.account-button:hover {
+    transform: scale(1.1);
+}
+
 /* Hero section */
 .hero {
     background: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)), url('https://via.placeholder.com/1200x400?text=Электронные+компоненты') no-repeat center center/cover;
@@ -1845,4 +1867,552 @@ body {
 .modal-btn.cancel {
     background: #95a5a6;
     color: white;
+}
+
+/* Account page styles */
+.account-page {
+    padding: 30px 0;
+}
+
+.account-page h1 {
+    font-size: 28px;
+    color: #2c3e50;
+    margin-bottom: 20px;
+}
+
+.account-content {
+    display: grid;
+    grid-template-columns: 250px 1fr;
+    gap: 30px;
+}
+
+/* Account sidebar */
+.account-sidebar {
+    background: #f8f9fa;
+    border-radius: 8px;
+    padding: 20px;
+}
+
+.user-info {
+    display: flex;
+    align-items: center;
+    margin-bottom: 20px;
+    padding-bottom: 20px;
+    border-bottom: 1px solid #eee;
+}
+
+.user-avatar {
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    background-color: #3498db;
+    color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 24px;
+    font-weight: bold;
+    margin-right: 15px;
+}
+
+.user-details h3 {
+    margin-bottom: 5px;
+    color: #2c3e50;
+}
+
+.user-details p {
+    color: #7f8c8d;
+    font-size: 14px;
+}
+
+.account-navigation ul {
+    list-style: none;
+}
+
+.account-navigation li {
+    margin-bottom: 10px;
+}
+
+.account-navigation a {
+    display: block;
+    padding: 10px;
+    border-radius: 4px;
+    text-decoration: none;
+    color: #333;
+    transition: all 0.3s;
+}
+
+.account-navigation a:hover {
+    background-color: #e9ecef;
+}
+
+.account-navigation a.active {
+    background-color: #3498db;
+    color: white;
+}
+
+/* Account main content */
+.account-main {
+    background: white;
+    border-radius: 8px;
+    box-shadow: 0 3px 10px rgba(0,0,0,0.1);
+    padding: 25px;
+}
+
+.account-tab {
+    display: none;
+}
+
+.account-tab.active {
+    display: block;
+}
+
+.account-main h2 {
+    color: #2c3e50;
+    margin-bottom: 20px;
+    padding-bottom: 15px;
+    border-bottom: 1px solid #eee;
+}
+
+/* Dashboard */
+.dashboard-summary {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 20px;
+    margin-bottom: 30px;
+}
+
+.summary-card {
+    display: flex;
+    align-items: center;
+    background: #f8f9fa;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+}
+
+.summary-icon {
+    font-size: 28px;
+    margin-right: 15px;
+}
+
+.summary-info h3 {
+    font-size: 24px;
+    margin-bottom: 5px;
+    color: #2c3e50;
+}
+
+.summary-info p {
+    color: #7f8c8d;
+    font-size: 14px;
+}
+
+.recent-activity h3 {
+    margin-bottom: 15px;
+    color: #2c3e50;
+}
+
+.activity-item {
+    display: flex;
+    align-items: flex-start;
+    padding: 15px 0;
+    border-bottom: 1px solid #eee;
+}
+
+.activity-icon {
+    font-size: 20px;
+    margin-right: 15px;
+    min-width: 30px;
+    text-align: center;
+}
+
+.activity-details p {
+    margin-bottom: 5px;
+}
+
+.activity-date {
+    color: #7f8c8d;
+    font-size: 14px;
+}
+
+/* Orders tab */
+.orders-filter {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 20px;
+}
+
+.orders-filter select,
+.orders-filter input {
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+}
+
+.orders-filter select {
+    width: 200px;
+}
+
+.orders-filter input {
+    width: 250px;
+}
+
+.order-item {
+    margin-bottom: 20px;
+    border: 1px solid #eee;
+    border-radius: 8px;
+    overflow: hidden;
+}
+
+.order-header {
+    display: grid;
+    grid-template-columns: 2fr 1fr 1fr auto;
+    padding: 15px;
+    background: #f8f9fa;
+    cursor: pointer;
+}
+
+.order-id h3 {
+    margin-bottom: 5px;
+    font-size: 16px;
+}
+
+.order-date {
+    color: #7f8c8d;
+    font-size: 14px;
+}
+
+.order-status {
+    text-align: center;
+    padding: 5px 10px;
+    border-radius: 4px;
+    font-weight: bold;
+    display: inline-block;
+    width: fit-content;
+}
+
+.order-status.processing {
+    background-color: #f39c12;
+    color: white;
+}
+
+.order-status.shipped {
+    background-color: #3498db;
+    color: white;
+}
+
+.order-status.delivered {
+    background-color: #2ecc71;
+    color: white;
+}
+
+.order-status.cancelled {
+    background-color: #e74c3c;
+    color: white;
+}
+
+.order-total {
+    font-weight: bold;
+    text-align: right;
+}
+
+.order-toggle {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 0 10px;
+}
+
+.order-details {
+    padding: 20px;
+    border-top: 1px solid #eee;
+}
+
+.order-products h4,
+.order-shipping h4 {
+    margin-bottom: 15px;
+    color: #2c3e50;
+}
+
+.order-product-item {
+    display: grid;
+    grid-template-columns: 60px 1fr auto;
+    gap: 15px;
+    margin-bottom: 15px;
+    padding-bottom: 15px;
+    border-bottom: 1px solid #eee;
+}
+
+.product-image img {
+    width: 100%;
+    height: auto;
+    border-radius: 4px;
+}
+
+.product-info h5 {
+    margin-bottom: 5px;
+}
+
+.product-info p {
+    margin-bottom: 5px;
+    font-size: 14px;
+    color: #7f8c8d;
+}
+
+.product-total {
+    font-weight: bold;
+    text-align: right;
+}
+
+.order-summary {
+    background: #f8f9fa;
+    padding: 15px;
+    border-radius: 8px;
+    margin: 20px 0;
+}
+
+.summary-item {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 10px;
+}
+
+.summary-item.total {
+    font-weight: bold;
+    padding-top: 10px;
+    margin-top: 10px;
+    border-top: 1px solid #ddd;
+}
+
+.order-shipping {
+    margin-bottom: 20px;
+}
+
+.order-shipping p {
+    margin-bottom: 10px;
+}
+
+.order-actions {
+    display: flex;
+    gap: 10px;
+}
+
+.order-actions button {
+    padding: 10px 15px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 14px;
+}
+
+.repeat-order {
+    background: #3498db;
+    color: white;
+}
+
+.track-order {
+    background: #2ecc71;
+    color: white;
+}
+
+.leave-review {
+    background: #f39c12;
+    color: white;
+}
+
+/* Addresses tab */
+.addresses-list {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 20px;
+    margin-bottom: 20px;
+}
+
+.address-item {
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    padding: 20px;
+    position: relative;
+}
+
+.address-item.default {
+    border-color: #3498db;
+}
+
+.address-badge {
+    position: absolute;
+    top: -10px;
+    right: 20px;
+    background: #3498db;
+    color: white;
+    padding: 5px 10px;
+    border-radius: 4px;
+    font-size: 12px;
+}
+
+.address-details h3 {
+    margin-bottom: 10px;
+    color: #2c3e50;
+}
+
+.address-details p {
+    margin-bottom: 5px;
+}
+
+.address-actions {
+    margin-top: 15px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+}
+
+.address-actions button {
+    padding: 8px 12px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 14px;
+}
+
+.set-default-address {
+    background: #3498db;
+    color: white;
+}
+
+.edit-address {
+    background: #f39c12;
+    color: white;
+}
+
+.delete-address {
+    background: #e74c3c;
+    color: white;
+}
+
+.add-address-btn {
+    padding: 10px 15px;
+    background: #3498db;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 16px;
+}
+
+.address-form {
+    margin-top: 20px;
+    background: #f8f9fa;
+    padding: 20px;
+    border-radius: 8px;
+}
+
+.address-form h3 {
+    margin-bottom: 20px;
+    color: #2c3e50;
+}
+
+/* Profile and Password tabs */
+.form-group {
+    margin-bottom: 20px;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 5px;
+    font-weight: bold;
+    color: #2c3e50;
+}
+
+.form-group input,
+.form-group select,
+.form-group textarea {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    font-size: 16px;
+}
+
+.form-group.checkbox {
+    display: flex;
+    align-items: center;
+}
+
+.form-group.checkbox input {
+    width: auto;
+    margin-right: 10px;
+}
+
+.form-group.checkbox label {
+    margin-bottom: 0;
+}
+
+.form-hint {
+    font-size: 14px;
+    color: #7f8c8d;
+    margin-top: 5px;
+}
+
+.form-actions {
+    display: flex;
+    gap: 10px;
+    margin-top: 20px;
+}
+
+.save-address,
+.save-profile,
+.change-password {
+    padding: 10px 15px;
+    background: #3498db;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 16px;
+}
+
+.cancel-address {
+    padding: 10px 15px;
+    background: #95a5a6;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 16px;
+}
+
+/* Responsive styles for account page */
+@media (max-width: 768px) {
+    .account-content {
+        grid-template-columns: 1fr;
+    }
+    
+    .account-sidebar {
+        margin-bottom: 20px;
+    }
+    
+    .order-header {
+        grid-template-columns: 1fr 1fr;
+        grid-template-rows: auto auto;
+        gap: 10px;
+    }
+    
+    .order-id {
+        grid-column: 1 / 3;
+    }
+    
+    .order-product-item {
+        grid-template-columns: 60px 1fr;
+        grid-template-rows: auto auto;
+    }
+    
+    .product-total {
+        grid-column: 1 / 3;
+        text-align: left;
+        margin-top: 10px;
+    }
+    
+    .addresses-list {
+        grid-template-columns: 1fr;
+    }
 }
