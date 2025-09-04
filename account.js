@@ -1,5 +1,42 @@
 // Account page functionality
 document.addEventListener('DOMContentLoaded', function() {
+    // Check if user is logged in
+    const currentUserData = localStorage.getItem('currentUser');
+    if (!currentUserData) {
+        // If user is not logged in, redirect to index page
+        window.location.href = 'index.html';
+        return;
+    }
+    
+    // Parse user data
+    const currentUser = JSON.parse(currentUserData);
+    
+    // Update user info on the page
+    const userNameElements = document.querySelectorAll('.user-details h3');
+    const userEmailElements = document.querySelectorAll('.user-details p');
+    
+    userNameElements.forEach(element => {
+        element.textContent = currentUser.name;
+    });
+    
+    userEmailElements.forEach(element => {
+        element.textContent = currentUser.email;
+    });
+    
+    // Update user avatar initials
+    const userAvatar = document.querySelector('.user-avatar span');
+    if (userAvatar) {
+        const nameParts = currentUser.name.split(' ');
+        let initials = '';
+        if (nameParts.length > 0) {
+            initials += nameParts[0].charAt(0).toUpperCase();
+        }
+        if (nameParts.length > 1) {
+            initials += nameParts[1].charAt(0).toUpperCase();
+        }
+        userAvatar.textContent = initials;
+    }
+    
     // Update cart count
     const cartCountElement = document.querySelector('.cart-count');
     const cartCount = localStorage.getItem('cartCount') || 0;
@@ -415,16 +452,26 @@ document.addEventListener('DOMContentLoaded', function() {
                 return;
             }
             
-            // Update user info in header (if present)
-            const userNameElement = document.querySelector('.user-details h3');
-            if (userNameElement) {
-                userNameElement.textContent = name;
+            // Update user info in localStorage
+            const currentUserData = localStorage.getItem('currentUser');
+            if (currentUserData) {
+                const currentUser = JSON.parse(currentUserData);
+                currentUser.name = name;
+                currentUser.email = email;
+                localStorage.setItem('currentUser', JSON.stringify(currentUser));
             }
             
-            const userEmailElement = document.querySelector('.user-details p');
-            if (userEmailElement) {
-                userEmailElement.textContent = email;
-            }
+            // Update user info on the page
+            const userNameElements = document.querySelectorAll('.user-details h3');
+            const userEmailElements = document.querySelectorAll('.user-details p');
+            
+            userNameElements.forEach(element => {
+                element.textContent = name;
+            });
+            
+            userEmailElements.forEach(element => {
+                element.textContent = email;
+            });
             
             // In a real implementation, this would send a request to the server
             alert('Личные данные успешно обновлены');
@@ -475,8 +522,17 @@ document.addEventListener('DOMContentLoaded', function() {
             e.preventDefault();
             
             if (confirm('Вы уверены, что хотите выйти?')) {
-                // In a real implementation, this would clear session/tokens
-                window.location.href = 'index.html';
+                // Use the logoutUser function from script.js to properly log out
+                if (typeof logoutUser === 'function') {
+                    logoutUser();
+                } else {
+                    // Fallback if logoutUser function is not available
+                    localStorage.removeItem('currentUser');
+                    localStorage.removeItem('userLoggedIn');
+                    localStorage.removeItem('userEmail');
+                    localStorage.removeItem('userName');
+                    window.location.href = 'index.html';
+                }
             }
         });
     }

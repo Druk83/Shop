@@ -2,6 +2,9 @@
 let cart = [];
 let cartCount = 0;
 
+// User authentication state
+let currentUser = null;
+
 // Create loading indicator
 function createLoadingIndicator() {
     const loadingIndicator = document.createElement('div');
@@ -106,6 +109,121 @@ function addToCart(productName, price) {
     
     // Show confirmation message
     alert(`Товар "${productName}" добавлен в корзину!`);
+}
+
+// Check user authentication state
+function checkUserAuthState() {
+    // Check if user data is stored in localStorage
+    const userData = localStorage.getItem('currentUser');
+    if (userData) {
+        currentUser = JSON.parse(userData);
+        updateUIForLoggedInUser(currentUser);
+    } else {
+        updateUIForGuestUser();
+    }
+}
+
+// Login user function
+function loginUser(email, name) {
+    currentUser = {
+        email: email,
+        name: name
+    };
+    
+    // Store user data in localStorage
+    localStorage.setItem('currentUser', JSON.stringify(currentUser));
+    
+    // Update UI
+    updateUIForLoggedInUser(currentUser);
+}
+
+// Logout user function
+function logoutUser() {
+    // Clear user data from localStorage
+    localStorage.removeItem('currentUser');
+    localStorage.removeItem('userLoggedIn');
+    localStorage.removeItem('userEmail');
+    localStorage.removeItem('userName');
+    currentUser = null;
+    
+    // Update UI
+    updateUIForGuestUser();
+    
+    // Redirect to homepage if not already there
+    if (window.location.pathname !== '/index.html' && window.location.pathname !== '/') {
+        window.location.href = 'index.html';
+    }
+}
+
+// Reset authentication forms
+function resetAuthForms() {
+    // Reset login form
+    const loginForm = document.getElementById('login-form');
+    if (loginForm) {
+        loginForm.reset();
+    }
+    
+    // Reset register form
+    const registerForm = document.getElementById('register-form');
+    if (registerForm) {
+        registerForm.reset();
+    }
+    
+    // Reset forgot password form
+    const forgotPasswordForm = document.getElementById('forgot-password-form');
+    if (forgotPasswordForm) {
+        forgotPasswordForm.reset();
+    }
+    
+    // Switch back to login tab
+    const loginTab = document.getElementById('login-tab');
+    const registerTab = document.getElementById('register-tab');
+    if (loginTab && registerTab) {
+        loginTab.classList.add('active');
+        registerTab.classList.remove('active');
+        
+        const loginFormElement = document.getElementById('login-form');
+        const registerFormElement = document.getElementById('register-form');
+        const forgotPasswordFormElement = document.getElementById('forgot-password-form');
+        
+        if (loginFormElement) loginFormElement.classList.add('active');
+        if (registerFormElement) registerFormElement.classList.remove('active');
+        if (forgotPasswordFormElement) forgotPasswordFormElement.classList.remove('active');
+    }
+}
+
+// Update UI for logged in user
+function updateUIForLoggedInUser(user) {
+    const guestView = document.getElementById('guest-account-view');
+    const userView = document.getElementById('user-account-view');
+    const userInitials = document.getElementById('user-initials');
+    
+    if (guestView && userView && userInitials) {
+        guestView.style.display = 'none';
+        userView.style.display = 'block';
+        
+        // Set user initials
+        const nameParts = user.name.split(' ');
+        let initials = '';
+        if (nameParts.length > 0) {
+            initials += nameParts[0].charAt(0).toUpperCase();
+        }
+        if (nameParts.length > 1) {
+            initials += nameParts[1].charAt(0).toUpperCase();
+        }
+        userInitials.textContent = initials;
+    }
+}
+
+// Update UI for guest user
+function updateUIForGuestUser() {
+    const guestView = document.getElementById('guest-account-view');
+    const userView = document.getElementById('user-account-view');
+    
+    if (guestView && userView) {
+        guestView.style.display = 'block';
+        userView.style.display = 'none';
+    }
 }
 
 // Initialize event listeners when the page loads
@@ -591,4 +709,408 @@ document.addEventListener('DOMContentLoaded', function() {
             });
         }
     }
+    
+    // Check user authentication state when page loads
+    checkUserAuthState();
+    
+    // Attach event listener to account button immediately
+    const accountButton = document.querySelector('.account-button');
+    if (accountButton) {
+        accountButton.addEventListener('click', function(e) {
+            e.preventDefault();
+            // We'll open the modal when it's available
+            const authModal = document.getElementById('auth-modal');
+            if (authModal) {
+                authModal.style.display = 'flex';
+            } else {
+                // If modal is not yet loaded, load it first
+                loadAuthModal().then(() => {
+                    const modal = document.getElementById('auth-modal');
+                    if (modal) {
+                        modal.style.display = 'flex';
+                    }
+                });
+            }
+        });
+    }
+    
+    // Load authentication modal from separate file
+    function loadAuthModal() {
+        return fetch('auth-modal.html')
+            .then(response => response.text())
+            .then(html => {
+                // Create a temporary div to hold the HTML
+                const tempDiv = document.createElement('div');
+                tempDiv.innerHTML = html;
+                
+                // Get the modal element
+                const modal = tempDiv.querySelector('#auth-modal');
+                
+                // Append the modal to the body if it doesn't already exist
+                if (modal && !document.getElementById('auth-modal')) {
+                    document.body.appendChild(modal);
+                    
+                    // Initialize modal functionality after the modal is added to the DOM
+                    initAuthModalFunctionality();
+                }
+            })
+            .catch(error => {
+                console.error('Error loading auth modal:', error);
+            });
+    }
+    
+    // Initialize authentication modal functionality
+    function initAuthModalFunctionality() {
+        const authModal = document.getElementById('auth-modal');
+        const closeModal = document.querySelector('#auth-modal .close-modal');
+        
+        // Close modal when close button is clicked
+        if (closeModal) {
+            closeModal.addEventListener('click', function() {
+                if (authModal) {
+                    authModal.style.display = 'none';
+                    resetAuthForms();
+                }
+            });
+        }
+        
+        // Close modal when clicking outside the modal content
+        if (authModal) {
+            authModal.addEventListener('click', function(e) {
+                if (e.target === authModal) {
+                    authModal.style.display = 'none';
+                    resetAuthForms();
+                }
+            });
+        }
+        
+        // Tab switching functionality
+        const loginTab = document.getElementById('login-tab');
+        const registerTab = document.getElementById('register-tab');
+        const loginForm = document.getElementById('login-form');
+        const registerForm = document.getElementById('register-form');
+        const forgotPasswordForm = document.getElementById('forgot-password-form');
+        const forgotPasswordLink = document.getElementById('forgot-password-link');
+        
+        if (loginTab && registerTab && loginForm && registerForm) {
+            loginTab.addEventListener('click', function() {
+                loginTab.classList.add('active');
+                registerTab.classList.remove('active');
+                loginForm.classList.add('active');
+                registerForm.classList.remove('active');
+                if (forgotPasswordForm) {
+                    forgotPasswordForm.classList.remove('active');
+                }
+            });
+            
+            registerTab.addEventListener('click', function() {
+                registerTab.classList.add('active');
+                loginTab.classList.remove('active');
+                registerForm.classList.add('active');
+                loginForm.classList.remove('active');
+                if (forgotPasswordForm) {
+                    forgotPasswordForm.classList.remove('active');
+                }
+            });
+        }
+        
+        // Forgot password link functionality
+        if (forgotPasswordLink) {
+            forgotPasswordLink.addEventListener('click', function(e) {
+                e.preventDefault();
+                loginForm.classList.remove('active');
+                registerForm.classList.remove('active');
+                if (forgotPasswordForm) {
+                    forgotPasswordForm.classList.add('active');
+                }
+            });
+        }
+        
+        // Form submissions
+        // Login form submission
+        if (loginForm) {
+            loginForm.addEventListener('submit', function(e) {
+                e.preventDefault();
+                const email = document.getElementById('login-email').value;
+                const password = document.getElementById('login-password').value;
+                
+                // Simple validation
+                if (!email || !password) {
+                    alert('Пожалуйста, заполните все поля');
+                    return;
+                }
+                
+                // Email validation
+                const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+                if (!emailRegex.test(email)) {
+                    alert('Пожалуйста, введите корректный email');
+                    return;
+                }
+                
+                // Simulate login process
+                showLoading();
+                setTimeout(() => {
+                    hideLoading();
+                    
+                    // For demo purposes, we'll consider the login successful
+                    // In a real app, this would validate against a server
+                    loginUser(email, 'Иван Петров');
+                    alert('Вы успешно вошли в аккаунт!');
+                    
+                    if (authModal) {
+                        authModal.style.display = 'none';
+                    }
+                    resetAuthForms();
+                }, 1000);
+            });
+        }
+        
+        // Register form submission
+        if (registerForm) {
+            registerForm.addEventListener('submit', function(e) {
+                e.preventDefault();
+                const name = document.getElementById('register-name').value;
+                const email = document.getElementById('register-email').value;
+                const password = document.getElementById('register-password').value;
+                const confirmPassword = document.getElementById('register-confirm-password').value;
+                
+                // Simple validation
+                if (!name || !email || !password || !confirmPassword) {
+                    alert('Пожалуйста, заполните все поля');
+                    return;
+                }
+                
+                // Email validation
+                const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+                if (!emailRegex.test(email)) {
+                    alert('Пожалуйста, введите корректный email');
+                    return;
+                }
+                
+                // Password validation
+                if (password.length < 6) {
+                    alert('Пароль должен содержать не менее 6 символов');
+                    return;
+                }
+                
+                // Password confirmation
+                if (password !== confirmPassword) {
+                    alert('Пароли не совпадают');
+                    return;
+                }
+                
+                // Simulate registration process
+                showLoading();
+                setTimeout(() => {
+                    hideLoading();
+                    
+                    // For demo purposes, we'll consider the registration successful
+                    // In a real app, this would create a user account on a server
+                    loginUser(email, name);
+                    alert('Вы успешно зарегистрировались!');
+                    
+                    if (authModal) {
+                        authModal.style.display = 'none';
+                    }
+                    resetAuthForms();
+                }, 1000);
+            });
+        }
+        
+        // Forgot password form submission
+        if (forgotPasswordForm) {
+            forgotPasswordForm.addEventListener('submit', function(e) {
+                e.preventDefault();
+                const email = document.getElementById('recover-email').value;
+                
+                // Simple validation
+                if (!email) {
+                    alert('Пожалуйста, введите email');
+                    return;
+                }
+                
+                // Email validation
+                const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+                if (!emailRegex.test(email)) {
+                    alert('Пожалуйста, введите корректный email');
+                    return;
+                }
+                
+                // Simulate password recovery process
+                showLoading();
+                setTimeout(() => {
+                    hideLoading();
+                    alert('Ссылка для восстановления пароля отправлена на ваш email!');
+                    if (authModal) {
+                        authModal.style.display = 'none';
+                    }
+                    resetAuthForms();
+                }, 1000);
+            });
+        }
+        
+        // Social Login Buttons
+        const googleLoginBtn = document.getElementById('google-login');
+        const yandexLoginBtn = document.getElementById('yandex-login');
+        const vkLoginBtn = document.getElementById('vk-login');
+        
+        // Social Registration Buttons
+        const googleRegisterBtn = document.getElementById('google-register');
+        const yandexRegisterBtn = document.getElementById('yandex-register');
+        const vkRegisterBtn = document.getElementById('vk-register');
+        
+        if (googleLoginBtn) {
+            googleLoginBtn.addEventListener('click', function() {
+                showLoading();
+                setTimeout(() => {
+                    hideLoading();
+                    // Simulate Google login
+                    loginUser('user@gmail.com', 'Google User');
+                    alert('Вы успешно вошли через Google!');
+                    if (authModal) {
+                        authModal.style.display = 'none';
+                    }
+                    resetAuthForms();
+                }, 1000);
+            });
+        }
+        
+        if (yandexLoginBtn) {
+            yandexLoginBtn.addEventListener('click', function() {
+                showLoading();
+                setTimeout(() => {
+                    hideLoading();
+                    // Simulate Yandex login
+                    loginUser('user@yandex.ru', 'Yandex User');
+                    alert('Вы успешно вошли через Яндекс!');
+                    if (authModal) {
+                        authModal.style.display = 'none';
+                    }
+                    resetAuthForms();
+                }, 1000);
+            });
+        }
+        
+        if (vkLoginBtn) {
+            vkLoginBtn.addEventListener('click', function() {
+                showLoading();
+                setTimeout(() => {
+                    hideLoading();
+                    // Simulate VK login
+                    loginUser('user@vk.com', 'VK User');
+                    alert('Вы успешно вошли через ВКонтакте!');
+                    if (authModal) {
+                        authModal.style.display = 'none';
+                    }
+                    resetAuthForms();
+                }, 1000);
+            });
+        }
+        
+        // Social Registration Buttons
+        if (googleRegisterBtn) {
+            googleRegisterBtn.addEventListener('click', function() {
+                showLoading();
+                setTimeout(() => {
+                    hideLoading();
+                    // Simulate Google registration
+                    loginUser('user@gmail.com', 'Google User');
+                    alert('Вы успешно зарегистрировались через Google!');
+                    if (authModal) {
+                        authModal.style.display = 'none';
+                    }
+                    resetAuthForms();
+                }, 1000);
+            });
+        }
+        
+        if (yandexRegisterBtn) {
+            yandexRegisterBtn.addEventListener('click', function() {
+                showLoading();
+                setTimeout(() => {
+                    hideLoading();
+                    // Simulate Yandex registration
+                    loginUser('user@yandex.ru', 'Yandex User');
+                    alert('Вы успешно зарегистрировались через Яндекс!');
+                    if (authModal) {
+                        authModal.style.display = 'none';
+                    }
+                    resetAuthForms();
+                }, 1000);
+            });
+        }
+        
+        if (vkRegisterBtn) {
+            vkRegisterBtn.addEventListener('click', function() {
+                showLoading();
+                setTimeout(() => {
+                    hideLoading();
+                    // Simulate VK registration
+                    loginUser('user@vk.com', 'VK User');
+                    alert('Вы успешно зарегистрировались через ВКонтакте!');
+                    if (authModal) {
+                        authModal.style.display = 'none';
+                    }
+                    resetAuthForms();
+                }, 1000);
+            });
+        }
+        
+        // Add logout functionality
+        const logoutLink = document.getElementById('logout-link');
+        if (logoutLink) {
+            logoutLink.addEventListener('click', function(e) {
+                e.preventDefault();
+                logoutUser();
+                alert('Вы успешно вышли из аккаунта');
+            });
+        }
+    }
+    
+    // Load the authentication modal when the page loads
+    loadAuthModal();
+    
+    // Enhanced dropdown functionality for better user experience
+    function enhanceUserDropdown() {
+        const userDropdown = document.querySelector('.user-dropdown');
+        if (userDropdown) {
+            let hideTimeout;
+            
+            userDropdown.addEventListener('mouseenter', function() {
+                clearTimeout(hideTimeout);
+                const dropdownContent = this.querySelector('.user-dropdown-content');
+                if (dropdownContent) {
+                    dropdownContent.style.display = 'block';
+                }
+            });
+            
+            userDropdown.addEventListener('mouseleave', function() {
+                const dropdownContent = this.querySelector('.user-dropdown-content');
+                if (dropdownContent) {
+                    // Add a small delay before hiding to allow moving cursor to dropdown items
+                    hideTimeout = setTimeout(() => {
+                        dropdownContent.style.display = 'none';
+                    }, 300);
+                }
+            });
+            
+            // Also handle the dropdown content itself
+            const dropdownContent = userDropdown.querySelector('.user-dropdown-content');
+            if (dropdownContent) {
+                dropdownContent.addEventListener('mouseenter', function() {
+                    clearTimeout(hideTimeout);
+                    this.style.display = 'block';
+                });
+                
+                dropdownContent.addEventListener('mouseleave', function() {
+                    hideTimeout = setTimeout(() => {
+                        this.style.display = 'none';
+                    }, 300);
+                });
+            }
+        }
+    }
+    
+    // Initialize enhanced dropdown functionality
+    enhanceUserDropdown();
 });

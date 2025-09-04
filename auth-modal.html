@@ -1,0 +1,94 @@
+<!-- Login/Register Modal -->
+<div id="auth-modal" class="modal">
+    <div class="modal-content auth-modal-content">
+        <div class="modal-header">
+            <h3 id="modal-title">Вход в аккаунт</h3>
+            <span class="close-modal">&times;</span>
+        </div>
+        <div class="modal-body">
+            <div class="auth-tabs">
+                <button id="login-tab" class="auth-tab active">Вход</button>
+                <button id="register-tab" class="auth-tab">Регистрация</button>
+            </div>
+            
+            <!-- Login Form -->
+            <form id="login-form" class="auth-form active">
+                <div class="form-group">
+                    <label for="login-email">Email:</label>
+                    <input type="email" id="login-email" required>
+                </div>
+                <div class="form-group">
+                    <label for="login-password">Пароль:</label>
+                    <input type="password" id="login-password" required>
+                </div>
+                <div class="form-group">
+                    <a href="#" id="forgot-password-link">Забыли пароль?</a>
+                </div>
+                <button type="submit" class="auth-submit-btn">Войти</button>
+                
+                <!-- Social Login Buttons -->
+                <div class="social-login">
+                    <p class="social-login-title">Или войдите через:</p>
+                    <div class="social-login-buttons">
+                        <button type="button" class="social-icon-btn google-btn" id="google-login" title="Войти через Google">
+                            <span class="social-icon">G</span>
+                        </button>
+                        <button type="button" class="social-icon-btn yandex-btn" id="yandex-login" title="Войти через Яндекс">
+                            <span class="social-icon">Я</span>
+                        </button>
+                        <button type="button" class="social-icon-btn vk-btn" id="vk-login" title="Войти через ВКонтакте">
+                            <span class="social-icon">VK</span>
+                        </button>
+                    </div>
+                </div>
+            </form>
+            
+            <!-- Register Form -->
+            <form id="register-form" class="auth-form">
+                <div class="form-group">
+                    <label for="register-name">Имя:</label>
+                    <input type="text" id="register-name" required>
+                </div>
+                <div class="form-group">
+                    <label for="register-email">Email:</label>
+                    <input type="email" id="register-email" required>
+                </div>
+                <div class="form-group">
+                    <label for="register-password">Пароль:</label>
+                    <input type="password" id="register-password" required>
+                </div>
+                <div class="form-group">
+                    <label for="register-confirm-password">Подтвердите пароль:</label>
+                    <input type="password" id="register-confirm-password" required>
+                </div>
+                <button type="submit" class="auth-submit-btn">Зарегистрироваться</button>
+                
+                <!-- Social Login Buttons -->
+                <div class="social-login">
+                    <p class="social-login-title">Или зарегистрируйтесь через:</p>
+                    <div class="social-login-buttons">
+                        <button type="button" class="social-icon-btn google-btn" id="google-register" title="Зарегистрироваться через Google">
+                            <span class="social-icon">G</span>
+                        </button>
+                        <button type="button" class="social-icon-btn yandex-btn" id="yandex-register" title="Зарегистрироваться через Яндекс">
+                            <span class="social-icon">Я</span>
+                        </button>
+                        <button type="button" class="social-icon-btn vk-btn" id="vk-register" title="Зарегистрироваться через ВКонтакте">
+                            <span class="social-icon">VK</span>
+                        </button>
+                    </div>
+                </div>
+            </form>
+            
+            <!-- Forgot Password Form -->
+            <form id="forgot-password-form" class="auth-form">
+                <p>Введите ваш email, и мы отправим вам ссылку для восстановления пароля.</p>
+                <div class="form-group">
+                    <label for="recover-email">Email:</label>
+                    <input type="email" id="recover-email" required>
+                </div>
+                <button type="submit" class="auth-submit-btn">Отправить</button>
+            </form>
+        </div>
+    </div>
+</div>

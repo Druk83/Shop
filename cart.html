@@ -51,9 +51,25 @@
                 </div>
 
                 <div class="user-account">
-                    <button class="account-button" onclick="window.location.href='account.html'">
-                        <span>👤</span>
-                    </button>
+                    <!-- Guest view -->
+                    <div id="guest-account-view">
+                        <a href="#" class="account-button">
+                            <span>👤</span>
+                        </a>
+                    </div>
+                    
+                    <!-- User view (when logged in) -->
+                    <div id="user-account-view" style="display: none;">
+                        <div class="user-dropdown">
+                            <button class="user-button">
+                                <span id="user-initials">ИП</span>
+                            </button>
+                            <div class="user-dropdown-content">
+                                <a href="account.html">Личный кабинет</a>
+                                <a href="#" id="logout-link">Выйти</a>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
