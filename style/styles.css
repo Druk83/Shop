@@ -1,0 +1,198 @@
+/* Main stylesheet importing all modular stylesheets */
+
+/* Base styles */
+@import url('main.css');
+
+/* Header and navigation */
+@import url('header.css');
+
+/* Homepage sections */
+@import url('homepage.css');
+
+/* Product components */
+@import url('product.css');
+
+/* Product detail page */
+@import url('product-detail.css');
+
+/* Catalog page */
+@import url('catalog.css');
+
+/* Cart page */
+@import url('cart.css');
+
+/* Account pages */
+@import url('account.css');
+
+/* Admin portal */
+@import url('admin.css');
+
+/* Static pages (About, Delivery, Contacts) */
+@import url('static-pages.css');
+
+/* Footer */
+@import url('footer.css');
+
+/* Modals */
+@import url('modals.css');
+
+/* Responsive design */
+@media (max-width: 768px) {
+    .header-top {
+        flex-direction: column;
+        text-align: center;
+    }
+    
+    .header-contacts {
+        text-align: center;
+        margin-top: 10px;
+    }
+    
+    .header-bottom {
+        flex-direction: column;
+        gap: 15px;
+    }
+    
+    .search-bar {
+        width: 100%;
+    }
+    
+    .main-nav ul {
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+    
+    .main-nav li {
+        margin: 5px 10px;
+    }
+    
+    .hero-content h2 {
+        font-size: 28px;
+    }
+    
+    .hero-content p {
+        font-size: 16px;
+    }
+    
+    .categories-grid,
+    .products-grid,
+    .advantages-grid {
+        grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    }
+    
+    .product-detail-content {
+        grid-template-columns: 1fr;
+    }
+    
+    .thumbnail-images {
+        margin-bottom: 20px;
+    }
+    
+    .catalog-header {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+    
+    .catalog-controls {
+        width: 100%;
+        justify-content: space-between;
+    }
+    
+    .catalog-content {
+        grid-template-columns: 1fr;
+    }
+    
+    .catalog-sidebar {
+        order: 2;
+    }
+    
+    .pagination {
+        flex-wrap: wrap;
+    }
+    
+    .cart-content {
+        grid-template-columns: 1fr;
+    }
+    
+    .cart-item {
+        grid-template-columns: 100px 1fr;
+        grid-template-rows: auto auto auto;
+    }
+    
+    .about-content {
+        grid-template-columns: 1fr;
+    }
+    
+    .contacts-content {
+        grid-template-columns: 1fr;
+    }
+    
+    .stats-grid {
+        grid-template-columns: 1fr 1fr;
+    }
+    
+    .info-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    .product-list-item {
+        grid-template-columns: 1fr;
+        text-align: center;
+    }
+    
+    .product-list-image {
+        margin: 0 auto;
+    }
+    
+    .product-list-actions {
+        margin-top: 15px;
+    }
+}
+
+/* --- Адаптивный дизайн для разных экранов --- */
+@media (max-width: 480px) {
+    .header {
+        padding: 8px 0;
+    }
+    .header-top {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 6px;
+    }
+    .logo h1 {
+        font-size: 20px;
+        margin-bottom: 2px;
+    }
+    .logo p {
+        font-size: 13px;
+    }
+    .header-contacts {
+        font-size: 13px;
+        flex-direction: column;
+        gap: 2px;
+    }
+    .header-bottom {
+        flex-direction: column;
+        align-items: stretch;
+        gap: 8px;
+    }
+    .main-nav ul {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 2px;
+        padding: 0;
+    }
+    .main-nav ul li {
+        width: 100%;
+    }
+    .search-bar {
+        width: 100%;
+        margin: 0 0 8px 0;
+    }
+    .cart {
+        margin: 0 0 8px 0;
+    }
+    .user-account {
+        margin: 0 0 8px 0;
+    }
+}
